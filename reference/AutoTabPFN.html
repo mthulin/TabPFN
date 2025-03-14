@@ -123,7 +123,49 @@ are allowed.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">predictors</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># XY interface</span></span></span>
+<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">AutoTabPFN</span><span class="op">(</span><span class="va">predictors</span>, <span class="va">outcome</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in on_error(result):</span> <span style="color: #BB0000;">✖</span> The <span style="color: #0000BB;">tabpfn_extensions.post_hoc_ensembles.sklearn_interface</span> Python</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   package is not installed in the discovered Python installation</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   (<span style="color: #0000BB;">/home/runner/.virtualenvs/r-reticulate/bin/python</span>).</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allow reticulate to automatically configure an ephemeral Python environment</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   by removing the Python installation from the order of discovery and</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   restarting the R session. See Order of Discovery</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   (<span style="color: #0000BB; font-style: italic;">&lt;https://rstudio.github.io/reticulate/dev/articles/versions.html#order-of-discovery&gt;</span>)</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   for more info.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Or install <span style="color: #0000BB;">tabpfn_extensions.post_hoc_ensembles.sklearn_interface</span> into the</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   selected Python environment by calling `reticulate::py_install() for the</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   package.`</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Formula interface</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu">AutoTabPFN</span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in on_error(result):</span> <span style="color: #BB0000;">✖</span> The <span style="color: #0000BB;">tabpfn_extensions.post_hoc_ensembles.sklearn_interface</span> Python</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   package is not installed in the discovered Python installation</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   (<span style="color: #0000BB;">/home/runner/.virtualenvs/r-reticulate/bin/python</span>).</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Allow reticulate to automatically configure an ephemeral Python environment</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   by removing the Python installation from the order of discovery and</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   restarting the R session. See Order of Discovery</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   (<span style="color: #0000BB; font-style: italic;">&lt;https://rstudio.github.io/reticulate/dev/articles/versions.html#order-of-discovery&gt;</span>)</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   for more info.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Or install <span style="color: #0000BB;">tabpfn_extensions.post_hoc_ensembles.sklearn_interface</span> into the</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   selected Python environment by calling `reticulate::py_install() for the</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   package.`</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Recipes interface</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/is_installed.html" class="external-link">is_installed</a></span><span class="op">(</span><span class="st">"recipes"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/recipes" class="external-link">recipes</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">rec</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://recipes.tidymodels.org/reference/recipe.html" class="external-link">recipe</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">mtcars</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://recipes.tidymodels.org/reference/step_log.html" class="external-link">step_log</a></span><span class="op">(</span><span class="va">disp</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">mod3</span> <span class="op">&lt;-</span> <span class="fu">AutoTabPFN</span><span class="op">(</span><span class="va">rec</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">mod3</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
